@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .ligand-result {
+            margin-bottom: 30px;
+        }
+
+        img {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results for "{{ keyword }}"</h1>
+    
+    {% if results %}
+        {% for ligand in results %}
+            <div class="ligand-result">
+                <h2>{{ ligand[0] }}</h2>
+                <p>{{ ligand[1] }}</p>
+                <img src="{{ url_for('static', filename=ligand[2]) }}" 
+                     alt="{{ ligand[0] }}" width="250">
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No ligands found.</p>
+    {% endif %}
+    
+    <a href="/"> Search Again</a>
+</body>
+</html>

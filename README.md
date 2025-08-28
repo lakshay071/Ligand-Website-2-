@@ -1,0 +1,1 @@
+This project is a simple Ligand Database Web Application built using Flask (Python), SQLite, and HTML/CSS. It allows users to search for ligands by name and view their descriptions along with molecular structure images.
